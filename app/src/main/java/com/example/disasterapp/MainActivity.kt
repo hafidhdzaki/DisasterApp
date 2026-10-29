@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.disasterapp.databinding.ActivityMainBinding
+import generateDummy
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // inisiasi adapter
-        val adapterDisaster = DisasterAdapter()
+        val adapterDisaster = DisasterAdapter(generateDummy())
         with(binding) {
             rvDisaster.apply {
                 adapter = adapterDisaster

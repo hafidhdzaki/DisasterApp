@@ -1,13 +1,21 @@
 package com.example.disasterapp
 
+import Disaster
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.disasterapp.databinding.ItemDisasterBinding
 
-class DisasterAdapter(): RecyclerView.Adapter<DisasterAdapter.ItemDisasterViewHolder>() {
+class DisasterAdapter(private val listDisaster : List<Disaster>): RecyclerView.Adapter<DisasterAdapter.ItemDisasterViewHolder>() {
     inner class ItemDisasterViewHolder(private val binding: ItemDisasterBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(data: Disaster) {
+            with(binding) {
+                txtDisasterName.text = data.nameDisaster
+                txtDisasterType.text = data.disasterType
+            }
+        }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             ItemDisasterViewHolder {
@@ -17,11 +25,11 @@ class DisasterAdapter(): RecyclerView.Adapter<DisasterAdapter.ItemDisasterViewHo
         return ItemDisasterViewHolder(binding)
     }
     override fun getItemCount(): Int {
-        return 5
+        return listDisaster.size
     }
-    override fun onBindViewHolder(holder: DisasterAdapter.ItemDisasterViewHolder, position:
+    override fun onBindViewHolder(holder: ItemDisasterViewHolder, position:
     Int) {
-        // TODO("Not yet implemented")
+        holder.bind(listDisaster[position])
     }
 }
 
