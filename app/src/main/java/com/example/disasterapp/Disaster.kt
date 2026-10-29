@@ -1,4 +1,5 @@
 data class Disaster (
+    val imageDisaster: String="",
     val nameDisaster: String="",
     val disasterType: String=""
 )
